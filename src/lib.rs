@@ -485,7 +485,7 @@ impl LLama {
             llama_free_params(params);
 
             let c_str: &CStr = CStr::from_ptr(out.as_mut_ptr());
-            let mut res: String = c_str.to_str().unwrap().to_owned();
+            let mut res: String = c_str.to_str().unwrap_or_default().to_owned();
 
             res = res.trim_start().to_string();
             res = res.trim_start_matches(&text).to_string();
